@@ -10,6 +10,7 @@ let userText = "";
 let errorCount = 0;
 let startTime;
 let questionText = "";
+let err = display.length;
 
 // Load and display question
 fetch("texts.json")
@@ -47,7 +48,7 @@ const typeController = (e) => {
   } else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
   }
-  const error = newLetter.length;
+  
   // check if given question text is equal to user typed text
   if (questionText === userText) {
     gameOver();
@@ -92,7 +93,7 @@ const gameOver = () => {
 
   // restart everything
   startTime = null;
-  errorCount = newLetter.length;
+  errorCount = 0;
   userText = "";
   display.classList.add("inactive");
 };
